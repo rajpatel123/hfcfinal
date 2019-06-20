@@ -4,6 +4,7 @@
     <string name="text_user_details">User Details</string>
     <string name="text_next">Next</string>
     <string name="text_user_list">User List</string>
+    <string name="alert_text">Are you sure to logout?</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="text_login">Login</string>
@@ -48,4 +49,13 @@
     <string name="bearer">bearer</string>
     <string name="no_internet">no iternet connection</string>
     <string name="text_add_user">Add User</string>
+    <string name="Internet_failed">Internet Connection\'s Failed!!</string>
+    <string name="response_failed">Something went wrong!!</string>
+    <string name="invalid_email">Invalid Email!!</string>
+    <string name="valid_phone">Enter 10 Digit Number!!</string>
+
+    <string name="address">1,1 Sikshak Colony,Behror,Alwar,Rajyasthan,301701</string>
+    <string name="terms">Privacy and Policy</string>
+
+
 </resources>

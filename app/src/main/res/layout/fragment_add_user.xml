@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragments.AddUserFragment">
 
 
@@ -29,62 +30,93 @@
                 android:layout_marginTop="19dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/logo"
-
-                />
+                android:src="@drawable/logo" />
 
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/black_divider_rgb">
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:src="@drawable/profile"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="@dimen/_15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
 
-                <TextView
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
+                    android:textSize="16dp"
+                    android:textColorHint="@color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp">
 
-                    android:paddingBottom="@dimen/_5dp"
-                    android:paddingTop="4dp"
-                    android:text="Personal Details"
-                    android:textSize="@dimen/margin_20"
-                    android:textStyle="bold" />
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edittext_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Username"
+                        android:layout_marginTop="@dimen/_20dp"
+                        android:inputType="text" />
+
+                </android.support.design.widget.TextInputLayout>
+
             </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <ImageView
+                android:src="@drawable/profile"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
+                android:layout_marginRight="20dp">
 
 
                 <android.support.design.widget.TextInputEditText
-
-
                     android:id="@+id/edittext_firstname"
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="First Name"
-
+                    android:layout_marginTop="@dimen/_20dp"
                     android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/profile"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -93,18 +125,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Last Name"
-
                     android:inputType="text" />
 
+
+
             </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/phone"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -113,18 +160,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone Number"
-
+                    android:maxLength="10"
                     android:inputType="phone" />
 
             </android.support.design.widget.TextInputLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/email"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -133,37 +194,60 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email Address"
-
                     android:inputType="textEmailAddress" />
 
             </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/clender"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
-
-
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="DD-MM-YYYY"
+                    android:hint="YYYY-MM-DD"
                     android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/home"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -172,19 +256,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Address"
-
                     android:inputType="textPostalAddress" />
 
             </android.support.design.widget.TextInputLayout>
 
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/loction"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -194,182 +291,17 @@
                     android:hint="Pincode"
                     android:inputType="number"
                     android:maxLength="6" />
-
             </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/black_divider_rgb">
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-
-                    android:paddingBottom="@dimen/_5dp"
-                    android:paddingTop="4dp"
-                    android:text="Account Details"
-                    android:textSize="@dimen/margin_20"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-                android:layout_marginTop="8dp"
-
-                >
-
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/edittext_aadharcard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Aadhar Card Number"
-                    android:inputType="number"
-                    android:maxLength="16" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
-
-
-                <android.support.design.widget.TextInputEditText
-
-                    android:id="@+id/editext_pancard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Pan Card Number"
-                    android:inputType="text" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-                >
-
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/edittext_accountnumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Account Number"
-
-                    android:inputType="number" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
-
-
-                <android.support.design.widget.TextInputEditText
-
-                    android:id="@+id/editext_ifsc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="IFSC Code"
-
-                    android:inputType="text" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
-
-
-                <android.support.design.widget.TextInputEditText
-
-                    android:id="@+id/edittext_accountholder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Account Holder Name"
-
-                    android:inputType="text" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
-
-
-                <android.support.design.widget.TextInputEditText
-
-                    android:id="@+id/edittext_branch_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Branch Name"
-                    android:inputType="text" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_5dp"
-                android:layout_marginRight="@dimen/_5dp"
-
-                >
-
-
-                <android.support.design.widget.TextInputEditText
-
-                    android:id="@+id/edittext_nomineeAdhar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Nominee Adhar"
-                    android:inputType="number" />
-
-            </android.support.design.widget.TextInputLayout>
-
-
-
-
+        </LinearLayout>
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_15dp"
-                android:layout_marginLeft="@dimen/_15dp"
-                android:layout_marginRight="@dimen/_15dp"
-                android:layout_marginTop="7dp"
-                android:background="@color/black_divider_rgb"
-                android:text="SUBMIT" />
+                android:layout_margin="@dimen/_15dp"
+                android:background="@drawable/oval"
+                android:text="SUBMIT"
+                android:textColor="@color/white" />
 
 
         </LinearLayout>

@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -21,19 +22,22 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 import hfc.com.newhfc.R;
 import hfc.com.newhfc.fragments.AboutFragment;
+import hfc.com.newhfc.fragments.AddBankDetailFragment;
+import hfc.com.newhfc.fragments.AddBankDetailFragment;
 import hfc.com.newhfc.fragments.AddUserFragment;
 import hfc.com.newhfc.fragments.CompanyDetail;
 import hfc.com.newhfc.fragments.DashboardFragment;
 import hfc.com.newhfc.fragments.ProfileFragment;
 import hfc.com.newhfc.fragments.UserListFragment;
-import hfc.com.newhfc.model.LoginResponse;
+import hfc.com.newhfc.model.login.LoginResponse;
 import hfc.com.newhfc.utils.Constants;
-import hfc.com.newhfc.utils.HFCPrefs;
+import hfc.com.newhfc.utils.HFMPrefs;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private CircleImageView pro_img;
+    private TextView user;
     NavigationView navigationView;
 
     CircleImageView circleImageView;
@@ -41,6 +45,9 @@ public class MainActivity extends AppCompatActivity
     TextView tvEmail;
 
     LoginResponse loginResponse;
+
+    public String date;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +60,43 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = DashboardFragment.newInstance();
         replaceFragment(fragment);
 
-        String data = HFCPrefs.getString(getApplicationContext(), Constants.LOGIN_DATA);
+        String data = HFMPrefs.getString(getApplicationContext(), Constants.LOGIN_DATA);
         loginResponse = new Gson().fromJson(data, LoginResponse.class);
+        // loginResponse = new Gson().fromJson(data, LoginResponse.class);
 
-         navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
 
-         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
-         tvName = headerView.findViewById(R.id.userName);
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        tvName = headerView.findViewById(R.id.userName);
         tvEmail = headerView.findViewById(R.id.email);
         circleImageView = headerView.findViewById(R.id.profile_header_image);
 
-        tvName.setText(loginResponse.getUser().getFirstName() + " " + loginResponse.getUser().getLastName());
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+        Intent incoming = getIntent();
+        if (getIntent().hasExtra("date")) {
+            date = incoming.getStringExtra("date");
+        }
+        if (loginResponse.getUserName() != null) {
+            tvName.setText("" + loginResponse.getUserName());
+        }
+        if (loginResponse.getEmail() != null) {
+            tvEmail.setText("" + loginResponse.getEmail());
+        }
+        Picasso.with(this).load(loginResponse.getImage()).error(R.drawable.profile_pictures).into(circleImageView);
+
+
+   /*     tvName.setText(loginResponse.getUser().getFirstName() + " " + loginResponse.getUser().getLastName());
         tvEmail.setText(loginResponse.getUser().getEmailAddress());
         Picasso.with(this).load(loginResponse.getUser().getImage()).into(circleImageView);
        /*
@@ -115,10 +148,15 @@ public class MainActivity extends AppCompatActivity
                 replaceFragment(fragment);
                 break;
             case R.id.addUser:
-                fragment = AddUserFragment.newInstance();
-                replaceFragment(fragment);
-
+                Intent intent = new Intent(MainActivity.this, AddUserActivity.class);
+                startActivity(intent);
                 break;
+
+            case R.id.addBankDetail:
+                fragment = AddBankDetailFragment.newInstance();
+                replaceFragment(fragment);
+                break;
+
             case R.id.myContacts:
                 fragment = UserListFragment.newInstance();
                 replaceFragment(fragment);
@@ -134,10 +172,9 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_share:
-
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
-                String text = "Join Hurry Future Marketing Private Limited ,click below to download\nhttps://play.google.com/store/apps/details?id=hfc.com.newhfc&hl=en";
+                String text = "Join Hurry Founder Marketing Private Limited ,click below to download\nhttps://play.google.com/store/apps/details?id=hfc.com.newhfc&hl=en";
                 share.putExtra(Intent.EXTRA_SUBJECT, "HFM");
                 share.putExtra(Intent.EXTRA_TEXT, text);
                 startActivity(Intent.createChooser(share, "share via"));
@@ -146,7 +183,10 @@ public class MainActivity extends AppCompatActivity
                 fragment = AboutFragment.newInstance();
                 replaceFragment(fragment);
                 break;
-
+            case R.id.nav_document:
+                Intent intent1=new Intent(MainActivity.this,DocumentActivity.class);
+                startActivity(intent1);
+                break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

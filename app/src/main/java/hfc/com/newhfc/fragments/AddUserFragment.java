@@ -2,6 +2,7 @@ package hfc.com.newhfc.fragments;
 
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,38 +12,37 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Patterns;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.util.Calendar;
 
-import butterknife.internal.Utils;
 import hfc.com.newhfc.R;
 import hfc.com.newhfc.activities.AddUserActivity;
-import hfc.com.newhfc.activities.LoginActivity;
 import hfc.com.newhfc.activities.MainActivity;
-import hfc.com.newhfc.activities.UserListActivity;
-import hfc.com.newhfc.model.adduser.AccountDetail;
-import hfc.com.newhfc.model.adduser.AddUser;
+import hfc.com.newhfc.model.adduser.AddUserRequest;
+import hfc.com.newhfc.model.adduser.AddUserResponse;
 import hfc.com.newhfc.retrofit.RestClient;
-import hfc.com.newhfc.utils.AppUtils;
+import hfc.com.newhfc.utils.Utils;
 import hfc.com.newhfc.utils.Constants;
-import hfc.com.newhfc.utils.HFCPrefs;
-import okhttp3.ResponseBody;
+import hfc.com.newhfc.utils.HFMPrefs;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,17 +52,24 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddUserFragment extends Fragment {
+public class AddUserFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     private static final int TAKE_PHOTO_CODE = 101;
     ImageView img_profile;
-    private EditText editTextLIC, editTextFirstname, editTextLastname,
+    private EditText editTextFirstname, editTextLastname,
             editTextPhone, editTextEmail, editDOB,
-            editTextAddress, editTextPincode, editTextAadharcard, editTextPancard,
-            editTextAccountnum, editTextIfsccode, editTextAccountholder,
-            editTextBranchname, editTextAdharNominee, editTextNomineename, editTextJoiningfee;
+            editTextAddress, editTextPincode, editTextUsername;
+
+    AddUserActivity addUserActivity;
+    AddUserResponse addUserResponse;
+    private TextView mTv;
+    //private Button mbtn;
+    private Calendar c;
+    private DatePickerDialog dp;
+
     private Button buttonSubmit;
     private String encodedImage;
+    String myReferalCode;
 
 
     public AddUserFragment() {
@@ -75,16 +82,28 @@ public class AddUserFragment extends Fragment {
         return fragment;
     }
 
+/*
+      if (addUserActivity. != null){
+     addUserActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        addUserActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }*/
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_user, container, false);
         img_profile = view.findViewById(R.id.img_profile);
+        editDOB = view.findViewById(R.id.dob);
+        // mTv=findViewById(R.id.textview);
+        //mbtn=findViewById(R.id.btnPick);
 
-
+        //show toolbar
         getActivity().setTitle("Add User");
 
+
+        editTextUsername = view.findViewById(R.id.edittext_username);
         editTextFirstname = view.findViewById(R.id.edittext_firstname);
         editTextLastname = view.findViewById(R.id.edittext_lastname);
         editTextPhone = view.findViewById(R.id.edittext_phonenumber);
@@ -92,15 +111,18 @@ public class AddUserFragment extends Fragment {
         editTextAddress = view.findViewById(R.id.edittext_address);
         editDOB = view.findViewById(R.id.dob);
         editTextPincode = view.findViewById(R.id.edittext_pincode);
-        editTextAadharcard = view.findViewById(R.id.edittext_aadharcard);
-        editTextPancard = view.findViewById(R.id.editext_pancard);
-        editTextAccountnum = view.findViewById(R.id.edittext_accountnumber);
-        editTextIfsccode = view.findViewById(R.id.editext_ifsc);
-        editTextBranchname = view.findViewById(R.id.edittext_branch_name);
-        editTextAccountholder = view.findViewById(R.id.edittext_accountholder);
-        editTextAdharNominee = view.findViewById(R.id.edittext_nomineeAdhar);
+        buttonSubmit = view.findViewById(R.id.btn_submit);
 
-        buttonSubmit = view.findViewById(R.id.button);
+      /*  editDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerFragment datePickerFragment=new DatePickerFragment();
+                datePickerFragment.show(getFragmentManager(),"date Picker");
+
+            }
+        });
+*/
+
 
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +130,29 @@ public class AddUserFragment extends Fragment {
                 Validation();
             }
         });
+
+
+        editDOB.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+
+                c = Calendar.getInstance();
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int month = c.get(Calendar.MONTH);
+                int year = c.get(Calendar.YEAR);
+
+                dp = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        editDOB.setText(year + "-" + (month + 1) + "-" + day);
+
+                    }
+                }, day, year, month);
+                dp.show();
+            }
+        });
+
 
         img_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,19 +198,10 @@ public class AddUserFragment extends Fragment {
         String lastname = editTextLastname.getText().toString().trim();
         String phone = editTextPhone.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
-        String date = editDOB.getText().toString().trim();
+        String dob = editDOB.getText().toString().trim();
         String address = editTextAddress.getText().toString().trim();
         String pincode = editTextPincode.getText().toString().trim();
-        String aadharNumber = editTextAadharcard.getText().toString().trim();
-        String pancard = editTextPancard.getText().toString().trim();
-        String accountnum = editTextAccountnum.getText().toString().trim();
-        String ifsccode = editTextIfsccode.getText().toString().trim();
-        String accountholdername = editTextAccountholder.getText().toString().trim();
-        String branchname = editTextBranchname.getText().toString().trim();
-        String aadharcardnumber = editTextAdharNominee.getText().toString().trim();
-        String nomineedate = "N/A";
-        //String joiningfees=editTextJoiningfee.getText().toString().trim();
-
+        String username = editTextUsername.getText().toString().trim();
 
         if (firstname.isEmpty()) {
             editTextFirstname.setError("Field can't be empty");
@@ -185,8 +221,24 @@ public class AddUserFragment extends Fragment {
 
         }
 
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            editTextEmail.setError(getString(R.string.invalid_email));
+            Toast.makeText(addUserActivity, R.string.invalid_email, Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        if (date.isEmpty()) {
+        if (TextUtils.isEmpty(phone)) {
+            editTextPhone.setError(getString(R.string.invalid_email));
+            return;
+        } else {
+            if (phone.length() < 10) {
+                editTextPhone.setError(getString(R.string.valid_phone));
+                return;
+            }
+        }
+
+
+        if (dob.isEmpty()) {
             editDOB.setError("Field can't be empty");
             check = false;
 
@@ -202,38 +254,8 @@ public class AddUserFragment extends Fragment {
             check = false;
 
         }
-        if (aadharNumber.isEmpty()) {
-            editTextAccountnum.setError("Field can't be empty");
-            check = false;
-
-        }
-        if (pancard.isEmpty()) {
-            editTextPancard.setError("Field can't be empty");
-            check = false;
-
-        }
-        if (accountnum.isEmpty()) {
-            editTextAccountnum.setError("Field can't be empty");
-            check = false;
-
-        }
-        if (ifsccode.isEmpty()) {
-            editTextIfsccode.setError("Field can't be empty");
-            check = false;
-
-        }
-        if (accountholdername.isEmpty()) {
-            editTextAccountholder.setError("Field can't be empty");
-            check = false;
-
-        }
-        if (branchname.isEmpty()) {
-            editTextBranchname.setError("Field can't be empty");
-            check = false;
-
-        }
-        if (aadharcardnumber.isEmpty()) {
-            editTextAdharNominee.setError("Field can't be empty");
+        if (username.isEmpty()) {
+            editTextPincode.setError("Field can't be empty");
             check = false;
 
         }
@@ -242,81 +264,90 @@ public class AddUserFragment extends Fragment {
         if (check == true) {
             //TODO add user request
 
-            AddUser addUser = new AddUser();
-            addUser.setFirstName(firstname);
-            addUser.setLastName(lastname);
-            addUser.setPhoneNumber(phone);
-            addUser.setEmailAddress(email);
-            addUser.setAddress(address);
-            addUser.setPinCode(pincode);
-            addUser.setPassword("HFC"+phone.substring(0,4));
-            String myReferalCode = HFCPrefs.getString(getActivity(), Constants.REFERRAL_CODE);
+
+            final AddUserRequest addUserRequest = new AddUserRequest();
+
+            addUserRequest.setFirstName(firstname);
+            addUserRequest.setLastName(lastname);
+            addUserRequest.setAddress(address);
+            try {
+                addUserRequest.setDateOfBirth(dob);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(addUserActivity, "Correct your Date Format", Toast.LENGTH_SHORT).show();
+            }
+
+            addUserRequest.setEmail(email);
+            addUserRequest.setPincode(pincode);
+            addUserRequest.setPhoneNumber(phone);
+            addUserRequest.setBase64File("");
+            addUserRequest.setUserName(username);
+            addUserRequest.setPassword("");
+            if (addUserActivity.referalCode != null) {
+                myReferalCode = addUserActivity.referalCode;
+            } else {
+                myReferalCode = HFMPrefs.getString(getActivity(), Constants.REFERAL);
+            }
+
+            addUserRequest.setReferalCode(myReferalCode);
+
+       /*
             if (getActivity() instanceof AddUserActivity) {
                 addUser.setReferalCode(((AddUserActivity) getActivity()).referalCode);
             } else {
                 addUser.setReferalCode(myReferalCode);
             }
+*/
 
-            addUser.setNomineeAadhar(editTextAdharNominee.getText().toString().trim());
-            addUser.setNomineeDOB(editDOB.getText().toString().trim());
-            AccountDetail accountDetail = new AccountDetail();
-            accountDetail.setAadharNumber(editTextAadharcard.getText().toString().trim());
-            accountDetail.setPancardNumber(editTextPancard.getText().toString().trim());
-            accountDetail.setAccountNumber(editTextAccountnum.getText().toString().trim());
-            accountDetail.setIFSCCode(editTextIfsccode.getText().toString().trim());
-            accountDetail.setAccountHolderName(editTextAccountholder.getText().toString().trim());
-            accountDetail.setBranchName(editTextBranchname.getText().toString().trim());
-
-//            accountDetail.setCVV(Integer.parseInt(etCVV.getEditText().getText().toString().trim()));
-
-            addUser.setAccountDetail(accountDetail);
-
-
-            String access_token = HFCPrefs.getString(getActivity(), Constants.ACCESS_TOKEN);
-            AppUtils.showProgressDialog(getActivity());
-            RestClient.addUser(access_token, addUser, new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    AppUtils.dismissProgressDialog();
-                    if (response.body() != null) {
-
-                        ResponseBody responseBody = response.body();
-                        try {
-                            String responseStringData = responseBody.string();
-                            JSONObject jsonObject = new JSONObject(responseStringData);
-                            if (Integer.parseInt(jsonObject.getString("UserId")) > 0) {
-                                Toast.makeText(getActivity(), "Registered Successfully", Toast.LENGTH_LONG).show();
+            if (Utils.isInternetConnected(getActivity())) {
+                Utils.showProgressDialog(getActivity());
+                RestClient.addUser(addUserRequest, new Callback<AddUserResponse>() {
+                    @Override
+                    public void onResponse(Call<AddUserResponse> call, Response<AddUserResponse> response) {
+                        Utils.dismissProgressDialog();
+                        if (response.body() != null) {
+                            if (!(response.body().getStatus())) {
+                                Toast.makeText(addUserActivity, "You Can Add Only 3 Users", Toast.LENGTH_SHORT).show();
                                 if (getActivity() instanceof AddUserActivity) {
                                     getActivity().finish();
                                 } else {
                                     ((MainActivity) getActivity()).replaceFragment(new DashboardFragment());
 
                                 }
-                            } else {
+                            }
 
-                                Toast.makeText(getActivity(), jsonObject.getString("Message"), Toast.LENGTH_LONG).show();
+                            if (response.body().getStatus()) {
+                                addUserResponse = response.body();
+                                if (addUserResponse.getId() > 0) {
+                                    Toast.makeText(getActivity(), "Registration Successfully", Toast.LENGTH_SHORT).show();
+                                    if (getActivity() instanceof AddUserActivity) {
+                                        getActivity().finish();
+                                    } else {
+                                        ((MainActivity) getActivity()).replaceFragment(new DashboardFragment());
+
+                                    }
+                                }
 
                             }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
                         }
-
-
                     }
 
-                }
 
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    AppUtils.dismissProgressDialog();
+                    @Override
+                    public void onFailure(Call<AddUserResponse> call, Throwable t) {
 
-                }
-            });
+                        Utils.dismissProgressDialog();
+                        Toast.makeText(addUserActivity, "Check Your Details", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.response_failed, Toast.LENGTH_SHORT).show();
 
-        } else {
-            Toast.makeText(getActivity(), "Please Fill All Data completed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            } else {
+                Utils.dismissProgressDialog();
+                Toast.makeText(getActivity(), R.string.Internet_failed, Toast.LENGTH_SHORT).show();
+            }
         }
 
 
@@ -356,11 +387,26 @@ public class AddUserFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        addUserActivity = (AddUserActivity) getActivity();
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
 
     }
 
