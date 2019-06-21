@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragments.AddUserFragment">
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:id="@+id/LinearImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/aadhaar"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_20dp"
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginRight="@dimen/_20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edittext_aadhar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Aadhar Card Number"
+                    android:maxLength="12"
+                    android:inputType="number" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/pancard"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edittext_pancard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pan Card Number"
+                    android:maxLength="10"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/bank"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edittext_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Account Number"
+                    android:inputType="number" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/bank"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edittext_ifsc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="IFSC Code"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/holder"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edittext_accountholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Account holder Name"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/branch"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edittext_branch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Branch Name"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/holder"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="@dimen/_15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColorHint="@color/black"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginRight="@dimen/_20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edittext_nominee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nominee Name"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_20dp"
+                android:background="@drawable/oval"
+                android:textColor="@color/white"
+                android:text="Save" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
