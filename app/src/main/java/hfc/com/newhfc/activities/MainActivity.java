@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity
     CircleImageView circleImageView;
     TextView tvName;
     TextView tvEmail;
+     LinearLayout linearLayout;
 
     LoginResponse loginResponse;
 
@@ -70,14 +72,16 @@ public class MainActivity extends AppCompatActivity
         tvName = headerView.findViewById(R.id.userName);
         tvEmail = headerView.findViewById(R.id.email);
         circleImageView = headerView.findViewById(R.id.profile_header_image);
+        linearLayout = headerView.findViewById(R.id.linearlayout);
 
-        circleImageView.setOnClickListener(new View.OnClickListener() {
+
+        linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -87,8 +91,8 @@ public class MainActivity extends AppCompatActivity
         if (getIntent().hasExtra("date")) {
             date = incoming.getStringExtra("date");
         }
-        if (loginResponse.getUserName() != null) {
-            tvName.setText("" + loginResponse.getUserName());
+        if (loginResponse.getFirstName() != null) {
+            tvName.setText("" + loginResponse.getFirstName());
         }
         if (loginResponse.getEmail() != null) {
             tvEmail.setText("" + loginResponse.getEmail());
@@ -171,10 +175,15 @@ public class MainActivity extends AppCompatActivity
                 replaceFragment(fragment);
                 break;
 
+            case R.id.nav_rateus:
+                Intent intent2 = new Intent(MainActivity.this, RateusActivity.class);
+                startActivity(intent2);
+                break;
+
             case R.id.nav_share:
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
-                String text = "Join Hurry Founder Marketing Private Limited ,click below to download\nhttps://play.google.com/store/apps/details?id=hfc.com.newhfc&hl=en";
+                String text = " HURRY FOUNDER MARKETING PRIVATE LIMITED,click below to download\nhttps://play.google.com/store/apps/details?id=hfc.com.newhfc&hl=en";
                 share.putExtra(Intent.EXTRA_SUBJECT, "HFM");
                 share.putExtra(Intent.EXTRA_TEXT, text);
                 startActivity(Intent.createChooser(share, "share via"));

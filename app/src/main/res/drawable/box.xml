@@ -6,13 +6,13 @@
         <shape android:shape="rectangle"
             android:thickness="@dimen/_10dp">
 
-            <solid android:color="@color/colorPrimary"/>
+            <solid android:color="@color/white"/>
 
             <corners android:radius="@dimen/_10dp"/>
 
             <stroke
                 android:width="3dp"
-                android:color="@color/white"/>
+                android:color="@color/black"/>
 
 
 
