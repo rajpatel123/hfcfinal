@@ -9,6 +9,13 @@
             android:id="@+id/home"
             android:title="Home"
             />
+
+        <item
+            android:icon="@drawable/homes"
+            android:id="@+id/my_dashboard"
+            android:title="My Dashboard"
+            />
+
         <item
             android:icon="@drawable/ic_userss"
             android:id="@+id/addUser"

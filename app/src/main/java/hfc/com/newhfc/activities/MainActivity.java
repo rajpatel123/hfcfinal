@@ -1,6 +1,7 @@
 package hfc.com.newhfc.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -151,6 +152,10 @@ public class MainActivity extends AppCompatActivity
                 fragment = DashboardFragment.newInstance();
                 replaceFragment(fragment);
                 break;
+            case R.id.my_dashboard:
+                Intent intent3 = new Intent(MainActivity.this, MyDashboardActivity.class);
+                startActivity(intent3);
+                break;
             case R.id.addUser:
                 Intent intent = new Intent(MainActivity.this, AddUserActivity.class);
                 startActivity(intent);
@@ -176,8 +181,12 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_rateus:
-                Intent intent2 = new Intent(MainActivity.this, RateusActivity.class);
-                startActivity(intent2);
+                //Intent intent2 = new Intent(MainActivity.this, RateusActivity.class);
+                //startActivity(intent2);
+                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=PackageName")));
+                Intent i = new Intent(android.content.Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://play.google.com/store/apps/details?id=hfc.com.newhfc&hl=en"));
+                startActivity(i);
                 break;
 
             case R.id.nav_share:

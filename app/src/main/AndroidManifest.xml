@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.RateusActivity"></activity>
+        <activity android:name=".activities.MyDashboardActivity"
+            android:theme="@style/AppTheme2"></activity>
+        <activity android:name=".activities.RateusActivity" />
         <activity
             android:name=".activities.DocumentActivity"
             android:label="Document"
