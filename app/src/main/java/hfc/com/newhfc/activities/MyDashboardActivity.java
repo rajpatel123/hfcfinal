@@ -38,6 +38,7 @@ public class MyDashboardActivity extends AppCompatActivity {
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapterViewPager);
         tabLayout.setupWithViewPager(viewPager);
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
