@@ -5,6 +5,7 @@ import hfc.com.newhfc.model.adduser.AddUserRequest;
 import hfc.com.newhfc.model.adduser.AddUserResponse;
 import hfc.com.newhfc.model.bankDetail.BankDetailRequest;
 import hfc.com.newhfc.model.bankDetail.BankDetailResponse;
+import hfc.com.newhfc.model.left.LeftDownLine;
 import hfc.com.newhfc.model.login.LoginRequest;
 import hfc.com.newhfc.model.login.LoginResponse;
 import hfc.com.newhfc.model.right.RightData;
@@ -60,6 +61,10 @@ public interface ApiInterface {
 
     @POST("referright")
     Call<RightData> userListRight(@Body UserListRequest userListRequest);
+
+
+    @POST("referleft")
+    Call<LeftDownLine> userListLeft(@Body UserListRequest userListRequest);
 
 
 
