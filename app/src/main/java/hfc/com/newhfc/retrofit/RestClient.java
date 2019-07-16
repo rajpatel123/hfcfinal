@@ -10,6 +10,7 @@ import hfc.com.newhfc.model.bankDetail.BankDetailRequest;
 import hfc.com.newhfc.model.bankDetail.BankDetailResponse;
 import hfc.com.newhfc.model.login.LoginRequest;
 import hfc.com.newhfc.model.login.LoginResponse;
+import hfc.com.newhfc.model.right.RightData;
 import hfc.com.newhfc.model.updateUser.UpdateUserDetail;
 import hfc.com.newhfc.model.updateUser.UpdateUserResponse;
 import hfc.com.newhfc.model.userlist.UserListRequest;
@@ -40,6 +41,10 @@ public class RestClient {
 
     public static void userList(UserListRequest userListRequest, Callback<UserListResponse> callback) {
         RetrofitClient.getClient().userList(userListRequest).enqueue(callback);
+    }
+
+    public static void userListNew(UserListRequest userListRequest, Callback<RightData> callback) {
+        RetrofitClient.getClient().userListRight(userListRequest).enqueue(callback);
     }
 
 

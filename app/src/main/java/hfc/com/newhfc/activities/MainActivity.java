@@ -30,7 +30,6 @@ import hfc.com.newhfc.fragments.AddUserFragment;
 import hfc.com.newhfc.fragments.CompanyDetail;
 import hfc.com.newhfc.fragments.DashboardFragment;
 import hfc.com.newhfc.fragments.ProfileFragment;
-import hfc.com.newhfc.fragments.UserListFragment;
 import hfc.com.newhfc.model.login.LoginResponse;
 import hfc.com.newhfc.utils.Constants;
 import hfc.com.newhfc.utils.HFMPrefs;
@@ -157,8 +156,9 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent3);
                 break;
             case R.id.addUser:
-                Intent intent = new Intent(MainActivity.this, AddUserActivity.class);
-                startActivity(intent);
+                fragment=AddUserFragment.newInstance();
+                replaceFragment(fragment);
+
                 break;
 
             case R.id.addBankDetail:
@@ -166,10 +166,10 @@ public class MainActivity extends AppCompatActivity
                 replaceFragment(fragment);
                 break;
 
-            case R.id.myContacts:
-                fragment = UserListFragment.newInstance();
-                replaceFragment(fragment);
-                break;
+//            case R.id.myContacts:
+//                fragment = UserListFragment.newInstance();
+//                replaceFragment(fragment);
+//                break;
             case R.id.bankDetails:
                 fragment = CompanyDetail.newInstance();
                 replaceFragment(fragment);

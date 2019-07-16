@@ -1,23 +1,19 @@
 package hfc.com.newhfc.retrofit;
 
 
-import java.util.List;
-
-import hfc.com.newhfc.model.UserList;
 import hfc.com.newhfc.model.adduser.AddUserRequest;
 import hfc.com.newhfc.model.adduser.AddUserResponse;
 import hfc.com.newhfc.model.bankDetail.BankDetailRequest;
 import hfc.com.newhfc.model.bankDetail.BankDetailResponse;
 import hfc.com.newhfc.model.login.LoginRequest;
 import hfc.com.newhfc.model.login.LoginResponse;
+import hfc.com.newhfc.model.right.RightData;
 import hfc.com.newhfc.model.updateUser.UpdateUserDetail;
 import hfc.com.newhfc.model.updateUser.UpdateUserResponse;
 import hfc.com.newhfc.model.userlist.UserListRequest;
 import hfc.com.newhfc.model.userlist.UserListResponse;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
@@ -36,7 +32,7 @@ public interface ApiInterface {
     Call<LoginResponse> login(@Body LoginRequestModel requestModel);*/
 
 
-    @POST("signup")
+    @POST("add_user")
     Call<AddUserResponse> addUser(@Body AddUserRequest addUserRequest);
 
 
@@ -58,6 +54,12 @@ public interface ApiInterface {
 
     @POST("list")
     Call<UserListResponse> userList(@Body UserListRequest userListRequest);
+
+//    @POST("referleft")
+//    Call<RightData> userListNew(@Body UserListRequest userListRequest);
+
+    @POST("referright")
+    Call<RightData> userListRight(@Body UserListRequest userListRequest);
 
 
 

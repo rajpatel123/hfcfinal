@@ -8,11 +8,10 @@
     <android.support.v7.widget.CardView
         android:id="@+id/deviceInfoView"
         android:layout_width="match_parent"
-
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         android:visibility="visible"
-
         app:cardCornerRadius="@dimen/card_radius"
+        android:padding="5dp"
         app:cardElevation="@dimen/card_elevation"
         app:cardUseCompatPadding="true">
 
@@ -30,7 +29,7 @@
                 android:background="@color/white"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="15dp">
+                >
 
               <!--  <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/image"
@@ -43,52 +42,110 @@
 
 
 
-                <ImageView
-                    android:id="@+id/simple_image"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:padding="@dimen/_5dp"
-                    />
+
                 <hfc.com.newhfc.views.CircleImageView
                     android:id="@+id/image"
                     android:visibility="visible"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="@dimen/_15dp"
                     android:tint="@color/black_disabled"
-                    android:padding="@dimen/_5dp"/>
+                    />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_15dp"
                     android:layout_marginLeft="@dimen/margin_15dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
-
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/tvName"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:paddingEnd="@dimen/_70sdp"
-                            android:paddingRight="@dimen/_70sdp"
-                            android:text="gdjdj fdhdf jfdjf"
-                            android:textColor="@color/black" />
+                            android:layout_weight="1"
+                            android:text="Name : Raj Patel"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
-                    </RelativeLayout>
+                        <TextView
+                            android:id="@+id/side"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingLeft="@dimen/_5dp"
+                            android:text="Side : LEFT"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
-
-                    <TextView
-                        android:id="@+id/tvDesc"
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="tetdb"
-                        android:textColor="@color/color_hint" />
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvDesc"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Email : raj@gmail.com"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingLeft="@dimen/_5dp"
+                            android:text="Earning: INR 19989.00"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/referalCode"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAllCaps="true"
+                            android:text="Code :WKNbUO"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingLeft="@dimen/_5dp"
+                            android:text="Email: "
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+
+
 
 
                 </LinearLayout>
@@ -99,8 +156,8 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="@dimen/_20dp"
-                    android:layout_marginRight="@dimen/_20dp"
+                    android:layout_marginEnd="@dimen/_10dp"
+                    android:layout_marginRight="@dimen/_10dp"
                     android:padding="2dp"
                     android:src="@drawable/ic_activated" />
 

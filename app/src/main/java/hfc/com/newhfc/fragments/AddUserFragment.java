@@ -18,13 +18,13 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Patterns;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,14 +35,13 @@ import java.text.DateFormat;
 import java.util.Calendar;
 
 import hfc.com.newhfc.R;
-import hfc.com.newhfc.activities.AddUserActivity;
 import hfc.com.newhfc.activities.MainActivity;
 import hfc.com.newhfc.model.adduser.AddUserRequest;
 import hfc.com.newhfc.model.adduser.AddUserResponse;
 import hfc.com.newhfc.retrofit.RestClient;
-import hfc.com.newhfc.utils.Utils;
 import hfc.com.newhfc.utils.Constants;
 import hfc.com.newhfc.utils.HFMPrefs;
+import hfc.com.newhfc.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,12 +59,13 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
             editTextPhone, editTextEmail, editDOB,
             editTextAddress, editTextPincode, editTextUsername;
 
-    AddUserActivity addUserActivity;
+    MainActivity mainActivity;
     AddUserResponse addUserResponse;
     private TextView mTv;
     //private Button mbtn;
     private Calendar c;
     private DatePickerDialog dp;
+    private RadioButton leftRadio, rightRadio;
 
     private Button buttonSubmit;
     private String encodedImage;
@@ -83,9 +83,9 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
     }
 
 /*
-      if (addUserActivity. != null){
-     addUserActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        addUserActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
+      if (mainActivity. != null){
+     mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mainActivity.getSupportActionBar().setDisplayShowHomeEnabled(true);
     }*/
 
 
@@ -96,6 +96,8 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
         View view = inflater.inflate(R.layout.fragment_add_user, container, false);
         img_profile = view.findViewById(R.id.img_profile);
         editDOB = view.findViewById(R.id.dob);
+        leftRadio = view.findViewById(R.id.left);
+        rightRadio = view.findViewById(R.id.right);
         // mTv=findViewById(R.id.textview);
         //mbtn=findViewById(R.id.btnPick);
 
@@ -149,6 +151,7 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
 
                     }
                 }, day, year, month);
+
                 dp.show();
             }
         });
@@ -223,7 +226,7 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             editTextEmail.setError(getString(R.string.invalid_email));
-            Toast.makeText(addUserActivity, R.string.invalid_email, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mainActivity, R.string.invalid_email, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -274,7 +277,7 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
                 addUserRequest.setDateOfBirth(dob);
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(addUserActivity, "Correct your Date Format", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mainActivity, "Correct your Date Format", Toast.LENGTH_SHORT).show();
             }
 
             addUserRequest.setEmail(email);
@@ -283,21 +286,14 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
             addUserRequest.setBase64File("");
             addUserRequest.setUserName(username);
             addUserRequest.setPassword("");
-            if (addUserActivity.referalCode != null) {
-                myReferalCode = addUserActivity.referalCode;
-            } else {
-                myReferalCode = HFMPrefs.getString(getActivity(), Constants.REFERAL);
-            }
-
+            myReferalCode = HFMPrefs.getString(getActivity(), Constants.REFERAL);
             addUserRequest.setReferalCode(myReferalCode);
 
-       /*
-            if (getActivity() instanceof AddUserActivity) {
-                addUser.setReferalCode(((AddUserActivity) getActivity()).referalCode);
+            if (leftRadio.isChecked()) {
+                addUserRequest.setSide("left");
             } else {
-                addUser.setReferalCode(myReferalCode);
+                addUserRequest.setSide("right");
             }
-*/
 
             if (Utils.isInternetConnected(getActivity())) {
                 Utils.showProgressDialog(getActivity());
@@ -307,25 +303,14 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
                         Utils.dismissProgressDialog();
                         if (response.body() != null) {
                             if (!(response.body().getStatus())) {
-                                Toast.makeText(addUserActivity, "You Can Add Only 3 Users", Toast.LENGTH_SHORT).show();
-                                if (getActivity() instanceof AddUserActivity) {
-                                    getActivity().finish();
-                                } else {
-                                    ((MainActivity) getActivity()).replaceFragment(new DashboardFragment());
-
-                                }
+                                Toast.makeText(mainActivity, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             }
 
                             if (response.body().getStatus()) {
                                 addUserResponse = response.body();
                                 if (addUserResponse.getId() > 0) {
-                                    Toast.makeText(getActivity(), "Registration Successfully", Toast.LENGTH_SHORT).show();
-                                    if (getActivity() instanceof AddUserActivity) {
-                                        getActivity().finish();
-                                    } else {
-                                        ((MainActivity) getActivity()).replaceFragment(new DashboardFragment());
-
-                                    }
+                                    Toast.makeText(getActivity(), "DownLine added Successfully", Toast.LENGTH_SHORT).show();
+                                    ((MainActivity) getActivity()).replaceFragment(new DashboardFragment());
                                 }
 
                             }
@@ -338,7 +323,7 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
                     public void onFailure(Call<AddUserResponse> call, Throwable t) {
 
                         Utils.dismissProgressDialog();
-                        Toast.makeText(addUserActivity, "Check Your Details", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mainActivity, "Check Your Details", Toast.LENGTH_SHORT).show();
                         Toast.makeText(getActivity(), R.string.response_failed, Toast.LENGTH_SHORT).show();
 
                     }
@@ -387,7 +372,7 @@ public class AddUserFragment extends Fragment implements DatePickerDialog.OnDate
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        addUserActivity = (AddUserActivity) getActivity();
+        mainActivity = (MainActivity) getActivity();
 
     }
 

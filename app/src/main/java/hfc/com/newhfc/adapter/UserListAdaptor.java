@@ -25,6 +25,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import hfc.com.newhfc.R;
+import hfc.com.newhfc.model.right.RightData;
+import hfc.com.newhfc.model.right.RightUser;
 import hfc.com.newhfc.model.userlist.Datum;
 import hfc.com.newhfc.views.CircleImageView;
 
@@ -38,7 +40,7 @@ public class UserListAdaptor extends RecyclerView.Adapter<UserListAdaptor.ViewHo
     private Context context;
 
 
-    private List<Datum> userList;
+    private RightData userList;
 
 
     OnUserClickCallback onUserClickCallback;
@@ -47,7 +49,7 @@ public class UserListAdaptor extends RecyclerView.Adapter<UserListAdaptor.ViewHo
         this.context = context;
     }
 
-    public void setDatumList(List<Datum> datumList) {
+    public void setDatumList(RightData datumList) {
         this.userList = datumList;
     }
 
@@ -66,7 +68,7 @@ public class UserListAdaptor extends RecyclerView.Adapter<UserListAdaptor.ViewHo
     public void onBindViewHolder(final UserListAdaptor.ViewHolder holder, int position) {
 
 
-        final Datum userlist = userList.get(position);
+        final RightUser userlist = userList.getRightUser().get(position);
         if (userlist.getFirstName() != null) {
             holder.tvName.setText("" + userlist.getFirstName());
         }
@@ -88,9 +90,6 @@ public class UserListAdaptor extends RecyclerView.Adapter<UserListAdaptor.ViewHo
 
         Log.d("Userlist","start");
        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
-           Picasso.with(context).load(userlist.getImage())
-                    .error(R.drawable.profile_pictures)
-                    .into(holder.simpleImageView);
            holder.simpleImageView.setVisibility(View.VISIBLE);
            Log.d("Userlist","success");
            // holder.appCompatImageView.setImageResource(R.drawable.profile_pictures);
@@ -109,8 +108,8 @@ public class UserListAdaptor extends RecyclerView.Adapter<UserListAdaptor.ViewHo
             holder.cardViewList.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (onUserClickCallback != null)
-                        onUserClickCallback.onUserClick(userlist.getReferalCode());
+//                    if (onUserClickCallback != null)
+//                        onUserClickCallback.onUserClick(userlist.getReferalCode());
 
 
                 }
@@ -151,8 +150,8 @@ public class UserListAdaptor extends RecyclerView.Adapter<UserListAdaptor.ViewHo
 
     @Override
     public int getItemCount() {
-        if (userList != null && userList.size() > 0) {
-            return userList.size();
+        if (userList != null && userList.getRightUser().size() > 0) {
+            return userList.getRightUser().size();
         } else {
             return 0;
         }
@@ -176,7 +175,6 @@ public class UserListAdaptor extends RecyclerView.Adapter<UserListAdaptor.ViewHo
         public ViewHolder(View view) {
             super(view);
             imageView = view.findViewById(R.id.image);
-            simpleImageView = view.findViewById(R.id.simple_image);
             tvName = view.findViewById(R.id.tvName);
             tvAddress = view.findViewById(R.id.tvDesc);
             activeImage = view.findViewById(R.id.tvDelete);

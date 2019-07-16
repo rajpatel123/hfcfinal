@@ -20,7 +20,6 @@ public class Constants {
     public static final int HTTP_UNAUTHORIZED = 401;
     public static final String LOGGED_IN_USER_ID = "loginID";
     public static final String LOGIN_DATA = "login_data";
-    public static String REFERRAL_CODE = "referralCode";
     public static final int SUCCESS_CODE = 200;
     public static String USER_LOGGED_IN = "loggedin";
     public static String USER_NAME = "name";

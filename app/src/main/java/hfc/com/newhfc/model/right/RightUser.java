@@ -1,45 +1,29 @@
-package hfc.com.newhfc.model.adduser;
-
+package hfc.com.newhfc.model.right;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AddUserRequest {
+public class RightUser {
 
+@SerializedName("Id")
+@Expose
+private String id;
 @SerializedName("First_Name")
 @Expose
 private String firstName;
-@SerializedName("Last_Name")
-@Expose
-private String lastName;
-
-    public String getSide() {
-        return side;
-    }
-
-    public void setSide(String side) {
-        this.side = side;
-    }
-
-    @SerializedName("Side")
-@Expose
-private String side;
 @SerializedName("User_Name")
 @Expose
 private String userName;
-@SerializedName("base64_file")
+@SerializedName("Image")
 @Expose
-private String base64File;
+private String image;
 @SerializedName("Phone_Number")
 @Expose
 private String phoneNumber;
 @SerializedName("Email")
 @Expose
 private String email;
-@SerializedName("Password")
-@Expose
-private String password;
-@SerializedName("Date_of_Birth")
+@SerializedName("Date-of-Birth")
 @Expose
 private String dateOfBirth;
 @SerializedName("Address")
@@ -48,9 +32,23 @@ private String address;
 @SerializedName("Pincode")
 @Expose
 private String pincode;
-@SerializedName("Referal_Code")
+@SerializedName("Status")
+@Expose
+private String status;
+@SerializedName("Side")
+@Expose
+private String side;
+@SerializedName("Referal_code")
 @Expose
 private String referalCode;
+
+public String getId() {
+return id;
+}
+
+public void setId(String id) {
+this.id = id;
+}
 
 public String getFirstName() {
 return firstName;
@@ -58,14 +56,6 @@ return firstName;
 
 public void setFirstName(String firstName) {
 this.firstName = firstName;
-}
-
-public String getLastName() {
-return lastName;
-}
-
-public void setLastName(String lastName) {
-this.lastName = lastName;
 }
 
 public String getUserName() {
@@ -76,12 +66,12 @@ public void setUserName(String userName) {
 this.userName = userName;
 }
 
-public String getBase64File() {
-return base64File;
+public String getImage() {
+return image;
 }
 
-public void setBase64File(String base64File) {
-this.base64File = base64File;
+public void setImage(String image) {
+this.image = image;
 }
 
 public String getPhoneNumber() {
@@ -98,14 +88,6 @@ return email;
 
 public void setEmail(String email) {
 this.email = email;
-}
-
-public String getPassword() {
-return password;
-}
-
-public void setPassword(String password) {
-this.password = password;
 }
 
 public String getDateOfBirth() {
@@ -130,6 +112,22 @@ return pincode;
 
 public void setPincode(String pincode) {
 this.pincode = pincode;
+}
+
+public String getStatus() {
+return status;
+}
+
+public void setStatus(String status) {
+this.status = status;
+}
+
+public String getSide() {
+return side;
+}
+
+public void setSide(String side) {
+this.side = side;
 }
 
 public String getReferalCode() {

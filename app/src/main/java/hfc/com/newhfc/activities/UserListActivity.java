@@ -48,7 +48,7 @@ public class UserListActivity extends AppCompatActivity implements UserListAdapt
             referalCode = getIntent().getStringExtra("referalCode");
         }
 
-        userlistData();
+      //  userlistData();
 
     }
 
@@ -79,104 +79,104 @@ public class UserListActivity extends AppCompatActivity implements UserListAdapt
     @Override
     protected void onResume() {
         super.onResume();
-        userlistData();
+        //userlistData();
     }
 
-    private void userlistData() {
-        if (Utils.isInternetConnected(this)) {
-            Utils.showProgressDialog(this);
-            final UserListRequest userListRequest = new UserListRequest();
-            //userListRequest.setReferalCode(HFMPrefs.getString(UserListActivity.this, Constants.REFERAL));
-            //userListRequest.setReferalCode("HFMMOHAN1");
-            userListRequest.setReferalCode(referalCode);
-            RestClient.userList(userListRequest, new Callback<UserListResponse>() {
-                @Override
-                public void onResponse(Call<UserListResponse> call, Response<UserListResponse> response) {
-                    Utils.dismissProgressDialog();
-                    if (response.body() != null) {
-                        if (userLists != null) {
-                            userLists.clear();
-                        }
-                        userLists = response.body().getData();
-                        if (userLists.size() == 0) {
-                            textView.setVisibility(View.VISIBLE);
-                            recyclerView.setVisibility(GONE);
-
-                        }/* else if (userLists.size() == 3) {
-                            textView.setVisibility(View.VISIBLE);
-                            recyclerView.setVisibility(GONE);
-
-                        }*/ else {
-                               invalidateOptionsMenu();
-
-                            UserListAdaptor userListAdaptor = new UserListAdaptor(getApplicationContext());
-                            userListAdaptor.setDatumList(userLists);
-                            userListAdaptor.setListener(UserListActivity.this);
-                            recyclerView.setHasFixedSize(true);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                            recyclerView.setLayoutManager(layoutManager);
-                            recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
-                            recyclerView.setAdapter(userListAdaptor);
-                            textView.setVisibility(GONE);
-                            recyclerView.setVisibility(View.VISIBLE);
-                        }
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<UserListResponse> call, Throwable t) {
-                    Utils.dismissProgressDialog();
-                    Toast.makeText(UserListActivity.this, R.string.response_failed, Toast.LENGTH_SHORT).show();
-
-                }
-            });
-        } else {
-            Utils.dismissProgressDialog();
-            Toast.makeText(UserListActivity.this, R.string.Internet_failed, Toast.LENGTH_SHORT).show();
-
-        }
-
-       /* if (Utils.isInternetConnected(getApplicationContext())) {
-            Utils.showProgressDialog(getApplicationContext());
-            Intent intent=getIntent();
-            int userId=intent.getIntExtra("id",0);
-            UserById userById = new UserById();
-            userById.setUserId(userId);
-            RestClient.getUserList(userById,getString(R.string.bearer) + " " + HFMPrefs.getString(getApplicationContext(), Constants.ACCESS_TOKEN), new Callback<List<UserList>>() {
-                @Override
-                public void onResponse(Call<List<UserList>> call, Response<List<UserList>> response) {
-                    Utils.dismissProgressDialog();
-                    if (response.body() != null) {
-                        Log.e("UserList Api Response", "" + response.body().size());
-                        if (userLists != null) {
-                            userLists.clear();
-                        }
-
-                        userLists = response.body();
-                        userListAdaptor = new UserListAdaptor(userLists, getApplicationContext());
-                        userListAdaptor.setListener(UserListActivity.this);
-                        recyclerView.setHasFixedSize(true);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
-                        recyclerView.setLayoutManager(layoutManager);
-                        recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
-                        recyclerView.setAdapter(userListAdaptor);
-                        //TODO implement Recycler view
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<List<UserList>> call, Throwable t) {
-                    Utils.dismissProgressDialog();
-                    Log.e("UserList Api Response", "" + t.getMessage());
-                    Utils.showMessage(getApplicationContext(), getString(R.string.unable_to_get_user));
-                }
-            });
-        } else {
-            Utils.showMessage(getApplicationContext(), "Please check internet conection");
-        }*/
-    }
+//    private void userlistData() {
+//        if (Utils.isInternetConnected(this)) {
+//            Utils.showProgressDialog(this);
+//            final UserListRequest userListRequest = new UserListRequest();
+//            //userListRequest.setReferalCode(HFMPrefs.getString(UserListActivity.this, Constants.REFERAL));
+//            //userListRequest.setReferalCode("HFMMOHAN1");
+//            userListRequest.setReferalCode(referalCode);
+//            RestClient.userList(userListRequest, new Callback<UserListResponse>() {
+//                @Override
+//                public void onResponse(Call<UserListResponse> call, Response<UserListResponse> response) {
+//                    Utils.dismissProgressDialog();
+//                    if (response.body() != null) {
+//                        if (userLists != null) {
+//                            userLists.clear();
+//                        }
+//                        userLists = response.body().getData();
+//                        if (userLists.size() == 0) {
+//                            textView.setVisibility(View.VISIBLE);
+//                            recyclerView.setVisibility(GONE);
+//
+//                        }/* else if (userLists.size() == 3) {
+//                            textView.setVisibility(View.VISIBLE);
+//                            recyclerView.setVisibility(GONE);
+//
+//                        }*/ else {
+//                               invalidateOptionsMenu();
+//
+//                            UserListAdaptor userListAdaptor = new UserListAdaptor(getApplicationContext());
+//                            userListAdaptor.setDatumList(userLists);
+//                            userListAdaptor.setListener(UserListActivity.this);
+//                            recyclerView.setHasFixedSize(true);
+//                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+//                            recyclerView.setLayoutManager(layoutManager);
+//                            recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+//                            recyclerView.setAdapter(userListAdaptor);
+//                            textView.setVisibility(GONE);
+//                            recyclerView.setVisibility(View.VISIBLE);
+//                        }
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<UserListResponse> call, Throwable t) {
+//                    Utils.dismissProgressDialog();
+//                    Toast.makeText(UserListActivity.this, R.string.response_failed, Toast.LENGTH_SHORT).show();
+//
+//                }
+//            });
+//        } else {
+//            Utils.dismissProgressDialog();
+//            Toast.makeText(UserListActivity.this, R.string.Internet_failed, Toast.LENGTH_SHORT).show();
+//
+//        }
+//
+//       /* if (Utils.isInternetConnected(getApplicationContext())) {
+//            Utils.showProgressDialog(getApplicationContext());
+//            Intent intent=getIntent();
+//            int userId=intent.getIntExtra("id",0);
+//            UserById userById = new UserById();
+//            userById.setUserId(userId);
+//            RestClient.getUserList(userById,getString(R.string.bearer) + " " + HFMPrefs.getString(getApplicationContext(), Constants.ACCESS_TOKEN), new Callback<List<UserList>>() {
+//                @Override
+//                public void onResponse(Call<List<UserList>> call, Response<List<UserList>> response) {
+//                    Utils.dismissProgressDialog();
+//                    if (response.body() != null) {
+//                        Log.e("UserList Api Response", "" + response.body().size());
+//                        if (userLists != null) {
+//                            userLists.clear();
+//                        }
+//
+//                        userLists = response.body();
+//                        userListAdaptor = new UserListAdaptor(userLists, getApplicationContext());
+//                        userListAdaptor.setListener(UserListActivity.this);
+//                        recyclerView.setHasFixedSize(true);
+//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
+//                        recyclerView.setLayoutManager(layoutManager);
+//                        recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+//                        recyclerView.setAdapter(userListAdaptor);
+//                        //TODO implement Recycler view
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<List<UserList>> call, Throwable t) {
+//                    Utils.dismissProgressDialog();
+//                    Log.e("UserList Api Response", "" + t.getMessage());
+//                    Utils.showMessage(getApplicationContext(), getString(R.string.unable_to_get_user));
+//                }
+//            });
+//        } else {
+//            Utils.showMessage(getApplicationContext(), "Please check internet conection");
+//        }*/
+//    }
 
     @Override
     public void onUserClick(String referalCode) {
