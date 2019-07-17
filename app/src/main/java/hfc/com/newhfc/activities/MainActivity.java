@@ -31,6 +31,7 @@ import hfc.com.newhfc.fragments.CompanyDetail;
 import hfc.com.newhfc.fragments.DashboardFragment;
 import hfc.com.newhfc.fragments.ProfileFragment;
 import hfc.com.newhfc.model.login.LoginResponse;
+import hfc.com.newhfc.model.login.ResponseLogin;
 import hfc.com.newhfc.utils.Constants;
 import hfc.com.newhfc.utils.HFMPrefs;
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity
     TextView tvEmail;
      LinearLayout linearLayout;
 
-    LoginResponse loginResponse;
+    ResponseLogin loginResponse;
 
     public String date;
 
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity
         replaceFragment(fragment);
 
         String data = HFMPrefs.getString(getApplicationContext(), Constants.LOGIN_DATA);
-        loginResponse = new Gson().fromJson(data, LoginResponse.class);
+        loginResponse = new Gson().fromJson(data, ResponseLogin.class);
         // loginResponse = new Gson().fromJson(data, LoginResponse.class);
 
         navigationView = findViewById(R.id.nav_view);

@@ -12,6 +12,7 @@ import hfc.com.newhfc.model.left.LeftDownLine;
 import hfc.com.newhfc.model.login.LoginRequest;
 import hfc.com.newhfc.model.login.LoginResponse;
 import hfc.com.newhfc.model.login.NewLoginResponse;
+import hfc.com.newhfc.model.login.ResponseLogin;
 import hfc.com.newhfc.model.right.RightData;
 import hfc.com.newhfc.model.updateUser.UpdateUserDetail;
 import hfc.com.newhfc.model.updateUser.UpdateUserResponse;
@@ -22,7 +23,7 @@ import retrofit2.Callback;
 
 public class RestClient {
 
-    public static void loginUser(LoginRequest loginRequest, Callback<NewLoginResponse> callback) {
+    public static void loginUser(LoginRequest loginRequest, Callback<ResponseLogin> callback) {
         RetrofitClient.getClient().loginUser(loginRequest).enqueue(callback);
     }
 

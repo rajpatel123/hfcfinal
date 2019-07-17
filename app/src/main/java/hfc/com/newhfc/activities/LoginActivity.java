@@ -24,6 +24,7 @@ import com.google.gson.Gson;
 import hfc.com.newhfc.R;
 import hfc.com.newhfc.model.login.LoginRequest;
 import hfc.com.newhfc.model.login.NewLoginResponse;
+import hfc.com.newhfc.model.login.ResponseLogin;
 import hfc.com.newhfc.retrofit.RestClient;
 import hfc.com.newhfc.utils.Utils;
 import hfc.com.newhfc.utils.Constants;
@@ -153,12 +154,12 @@ public class LoginActivity extends AppCompatActivity {
                  Utils.showProgressDialog(this);
                  if (Utils.isInternetConnected(this)) {
                      Utils.showProgressDialog(this);
-                     RestClient.loginUser(loginRequest, new Callback<NewLoginResponse>() {
+                     RestClient.loginUser(loginRequest, new Callback<ResponseLogin>() {
                          @Override
-                         public void onResponse(Call<NewLoginResponse> call, Response<NewLoginResponse> response) {
+                         public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                              Utils.dismissProgressDialog();
                              if (response.body() != null) {
-                                 NewLoginResponse NewLoginResponse = response.body();
+                                 ResponseLogin NewLoginResponse = response.body();
                                  if (response.code() == 200) {
                                      HFMPrefs.putString(LoginActivity.this, Constants.REFERAL, NewLoginResponse.getReferal());
                                      HFMPrefs.putString(LoginActivity.this, Constants.USER_ID, NewLoginResponse.getId());
@@ -183,7 +184,7 @@ public class LoginActivity extends AppCompatActivity {
                          }
 
                          @Override
-                         public void onFailure(Call<NewLoginResponse> call, Throwable t) {
+                         public void onFailure(Call<ResponseLogin> call, Throwable t) {
                              Utils.dismissProgressDialog();
                              Toast.makeText(LoginActivity.this, R.string.response_failed, Toast.LENGTH_SHORT).show();
 

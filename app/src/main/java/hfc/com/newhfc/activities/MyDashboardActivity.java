@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import hfc.com.newhfc.fragments.LeftFragment;
 import hfc.com.newhfc.fragments.RightFragment;
 import hfc.com.newhfc.model.LoginResponse;
 import hfc.com.newhfc.model.login.NewLoginResponse;
+import hfc.com.newhfc.model.login.ResponseLogin;
 import hfc.com.newhfc.utils.Constants;
 import hfc.com.newhfc.utils.HFCPrefs;
 
@@ -29,7 +31,7 @@ public class MyDashboardActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private MyPagerAdapter adapterViewPager;
-    private TextView name,phone,adhar,nominee,address,emails,pan,bankAcnt,relation;
+    private TextView name,phone,adhar,nominee,address,emails,pan,bankAcnt,relation,earning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +46,13 @@ public class MyDashboardActivity extends AppCompatActivity {
         address=findViewById(R.id.tv_address);
         adhar=findViewById(R.id.tv_adhar);
         bankAcnt=findViewById(R.id.tv_bank);
+        earning=findViewById(R.id.tv_earning);
 
-        NewLoginResponse loginResponse = new Gson().fromJson(HFCPrefs.getString(this,LOGIN_DATA),NewLoginResponse.class);
+
+        ResponseLogin loginResponse = new Gson().fromJson(HFCPrefs.getString(this,LOGIN_DATA),ResponseLogin.class);
+        Log.d("mdfnv", "onCreate: "+loginResponse);
         if (loginResponse.getFirstName()!=null && loginResponse.getLastName()!=null){
+            Log.d("mdfnv", "onCreate: "+loginResponse.getFirstName());
             name.setText(" Name : " + loginResponse.getFirstName() + " " + loginResponse.getLastName());
         }
         if (loginResponse.getEmail()!=null ){
@@ -56,9 +62,11 @@ public class MyDashboardActivity extends AppCompatActivity {
             phone.setText("Phone :" + loginResponse.getPhoneNumber());
         }
         if (loginResponse. getPanNumber() != null) {
+            Log.d("mdfnv", "onCreate: "+loginResponse.getPanNumber());
             pan.setText("Pan :" + loginResponse.getPanNumber());
         }
         if (loginResponse.getNomineeName() != null) {
+            Log.d("mdfnv", "onCreate: "+loginResponse.getNomineeName());
             nominee.setText("Nominee :" + loginResponse.getNomineeName());
         }
         if (loginResponse.getRelation() != null) {
@@ -72,6 +80,9 @@ public class MyDashboardActivity extends AppCompatActivity {
         }
         if (loginResponse.getAccountNumber() != null) {
             bankAcnt.setText("Bank A/C :" + loginResponse.getAccountNumber());
+        }
+        if (loginResponse.getCommision() != null) {
+            earning.setText("Earning :" + loginResponse.getCommision());
         }
 
 
