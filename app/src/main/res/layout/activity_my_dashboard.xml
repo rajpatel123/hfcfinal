@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text="Relation : Wife"
+                android:text="Relation : "
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
