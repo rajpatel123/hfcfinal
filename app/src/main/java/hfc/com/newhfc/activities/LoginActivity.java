@@ -23,7 +23,7 @@ import com.google.gson.Gson;
 
 import hfc.com.newhfc.R;
 import hfc.com.newhfc.model.login.LoginRequest;
-import hfc.com.newhfc.model.login.LoginResponse;
+import hfc.com.newhfc.model.login.NewLoginResponse;
 import hfc.com.newhfc.retrofit.RestClient;
 import hfc.com.newhfc.utils.Utils;
 import hfc.com.newhfc.utils.Constants;
@@ -153,20 +153,20 @@ public class LoginActivity extends AppCompatActivity {
                  Utils.showProgressDialog(this);
                  if (Utils.isInternetConnected(this)) {
                      Utils.showProgressDialog(this);
-                     RestClient.loginUser(loginRequest, new Callback<LoginResponse>() {
+                     RestClient.loginUser(loginRequest, new Callback<NewLoginResponse>() {
                          @Override
-                         public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                         public void onResponse(Call<NewLoginResponse> call, Response<NewLoginResponse> response) {
                              Utils.dismissProgressDialog();
                              if (response.body() != null) {
-                                 LoginResponse loginResponse = response.body();
+                                 NewLoginResponse NewLoginResponse = response.body();
                                  if (response.code() == 200) {
-                                     HFMPrefs.putString(LoginActivity.this, Constants.REFERAL, loginResponse.getReferal());
-                                     HFMPrefs.putString(LoginActivity.this, Constants.USER_ID, loginResponse.getId());
-                                     HFMPrefs.putString(LoginActivity.this, Constants.USER_ID, loginResponse.getId());
-                                     HFMPrefs.putString(LoginActivity.this, Constants.LOGIN_DATA, new Gson().toJson(loginResponse));
+                                     HFMPrefs.putString(LoginActivity.this, Constants.REFERAL, NewLoginResponse.getReferal());
+                                     HFMPrefs.putString(LoginActivity.this, Constants.USER_ID, NewLoginResponse.getId());
+                                     HFMPrefs.putString(LoginActivity.this, Constants.USER_ID, NewLoginResponse.getId());
+                                     HFMPrefs.putString(LoginActivity.this, Constants.LOGIN_DATA, new Gson().toJson(NewLoginResponse));
 
                                      Intent intent = null;
-                                     if (loginResponse.getActiveStatus().equalsIgnoreCase("1")) {
+                                     if (NewLoginResponse.getActiveStatus().equalsIgnoreCase("1")) {
                                          intent = new Intent(LoginActivity.this, MainActivity.class);
                                          startActivity(intent);
                                          finish();
@@ -183,7 +183,7 @@ public class LoginActivity extends AppCompatActivity {
                          }
 
                          @Override
-                         public void onFailure(Call<LoginResponse> call, Throwable t) {
+                         public void onFailure(Call<NewLoginResponse> call, Throwable t) {
                              Utils.dismissProgressDialog();
                              Toast.makeText(LoginActivity.this, R.string.response_failed, Toast.LENGTH_SHORT).show();
 
@@ -201,11 +201,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
          /*
-            RestClient.login(loginRequestModel, new Callback<LoginResponse>() {
+            RestClient.login(loginRequestModel, new Callback<NewLoginResponse>() {
                 @Override
-                public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                public void onResponse(Call<NewLoginResponse> call, Response<NewLoginResponse> response) {
                     if (response.isSuccessful()) {
-                        LoginResponse responseModel = response.body();
+                        NewLoginResponse responseModel = response.body();
 
                         Utils.dismissProgressDialog();
                         if (response.code() == 200) {
@@ -231,7 +231,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<LoginResponse> call, Throwable t) {
+                public void onFailure(Call<NewLoginResponse> call, Throwable t) {
                     Utils.dismissProgressDialog();
                     Log.d(LoginActivity.class.getSimpleName(), "Login failed");
                 }

@@ -48,7 +48,7 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="anil123" />
+                android:text="Anil123" />
 
         </android.support.design.widget.TextInputLayout>
 

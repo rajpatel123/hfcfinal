@@ -102,7 +102,6 @@ public class ProfileActivity extends AppCompatActivity {
             textViewPhone.setText("" + loginResponse.getPhoneNumber());
         }
 
-
     }
 
     @Override

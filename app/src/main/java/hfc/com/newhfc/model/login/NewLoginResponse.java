@@ -74,6 +74,19 @@ private String nomineeName;
 @Expose
 private String relation;
 
+
+    public String getCommision() {
+        return commision;
+    }
+
+    public void setCommision(String commision) {
+        this.commision = commision;
+    }
+
+    @SerializedName("Commision")
+@Expose
+private String commision;
+
 public Boolean getStatus() {
 return status;
 }

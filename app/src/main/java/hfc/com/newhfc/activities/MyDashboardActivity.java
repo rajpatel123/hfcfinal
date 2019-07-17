@@ -9,10 +9,19 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import hfc.com.newhfc.R;
 import hfc.com.newhfc.fragments.LeftFragment;
 import hfc.com.newhfc.fragments.RightFragment;
+import hfc.com.newhfc.model.LoginResponse;
+import hfc.com.newhfc.model.login.NewLoginResponse;
+import hfc.com.newhfc.utils.Constants;
+import hfc.com.newhfc.utils.HFCPrefs;
+
+import static hfc.com.newhfc.utils.Constants.LOGIN_DATA;
 
 public class MyDashboardActivity extends AppCompatActivity {
 
@@ -20,11 +29,52 @@ public class MyDashboardActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private MyPagerAdapter adapterViewPager;
+    private TextView name,phone,adhar,nominee,address,emails,pan,bankAcnt,relation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_dashboard);
+        name=findViewById(R.id.tv_names);
+        emails=findViewById(R.id.tv_emails);
+        phone=findViewById(R.id.tv_phones);
+        pan=findViewById(R.id.tv_pancard);
+        nominee=findViewById(R.id.tv_nominee);
+        relation=findViewById(R.id.tv_relations);
+        address=findViewById(R.id.tv_address);
+        adhar=findViewById(R.id.tv_adhar);
+        bankAcnt=findViewById(R.id.tv_bank);
+
+        NewLoginResponse loginResponse = new Gson().fromJson(HFCPrefs.getString(this,LOGIN_DATA),NewLoginResponse.class);
+        if (loginResponse.getFirstName()!=null && loginResponse.getLastName()!=null){
+            name.setText(" Name : " + loginResponse.getFirstName() + " " + loginResponse.getLastName());
+        }
+        if (loginResponse.getEmail()!=null ){
+            emails.setText(" Email : " + loginResponse.getEmail() );
+        }
+        if (loginResponse.getPhoneNumber() != null) {
+            phone.setText("Phone :" + loginResponse.getPhoneNumber());
+        }
+        if (loginResponse. getPanNumber() != null) {
+            pan.setText("Pan :" + loginResponse.getPanNumber());
+        }
+        if (loginResponse.getNomineeName() != null) {
+            nominee.setText("Nominee :" + loginResponse.getNomineeName());
+        }
+        if (loginResponse.getRelation() != null) {
+            relation.setText("Relation :" + loginResponse.getRelation());
+        }
+        if (loginResponse.getAddress() != null) {
+            address.setText("Address :" + loginResponse.getAddress());
+        }
+        if (loginResponse.getAdharNumber() != null) {
+            adhar.setText("Adhar :" + loginResponse.getAdharNumber());
+        }
+        if (loginResponse.getAccountNumber() != null) {
+            bankAcnt.setText("Bank A/C :" + loginResponse.getAccountNumber());
+        }
+
+
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
