@@ -131,13 +131,13 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_relation"
+                android:id="@+id/tv_earning"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text=" "
+                android:text="Earning : ----"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -163,13 +163,13 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_earnings"
+                android:id="@+id/tv_relation"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text=""
+                android:text="Relation : ----"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />

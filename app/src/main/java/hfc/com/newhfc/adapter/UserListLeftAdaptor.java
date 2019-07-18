@@ -142,7 +142,7 @@ public class UserListLeftAdaptor extends RecyclerView.Adapter<UserListLeftAdapto
 
     @Override
     public int getItemCount() {
-        if (userList != null && userList.getData().size() > 0) {
+        if (userList != null && userList.getData()!=null && userList.getData().size() > 0) {
             return userList.getData().size();
         } else {
             return 0;

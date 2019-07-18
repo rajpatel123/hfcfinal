@@ -73,19 +73,14 @@ private String nomineeName;
 @SerializedName("Relation")
 @Expose
 private String relation;
-
-
-    public String getCommision() {
-        return commision;
-    }
-
-    public void setCommision(String commision) {
-        this.commision = commision;
-    }
-
-    @SerializedName("Commision")
+@SerializedName("Commision")
 @Expose
 private String commision;
+
+
+
+
+
 
 public Boolean getStatus() {
 return status;
@@ -247,9 +242,7 @@ public void setBranchName(String branchName) {
 this.branchName = branchName;
 }
 
-public String getNomineeName() {
-return nomineeName;
-}
+public String getNomineeName() { return nomineeName; }
 
 public void setNomineeName(String nomineeName) {
 this.nomineeName = nomineeName;
@@ -262,5 +255,9 @@ return relation;
 public void setRelation(String relation) {
 this.relation = relation;
 }
+
+public String getCommision() { return commision; }
+
+public void setCommision(String commision) { this.commision = commision; }
 
 }

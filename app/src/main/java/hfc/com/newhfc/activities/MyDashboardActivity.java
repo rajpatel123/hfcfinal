@@ -46,7 +46,7 @@ public class MyDashboardActivity extends AppCompatActivity {
         address=findViewById(R.id.tv_address);
         adhar=findViewById(R.id.tv_adhar);
         bankAcnt=findViewById(R.id.tv_bank);
-        earning=findViewById(R.id.tv_earnings);
+        earning=findViewById(R.id.tv_earning);
 
 
         ResponseLogin loginResponses = new Gson().fromJson(HFCPrefs.getString(this,LOGIN_DATA),ResponseLogin.class);
@@ -69,9 +69,9 @@ public class MyDashboardActivity extends AppCompatActivity {
             Log.d("mdfnv", "onCreate: "+loginResponses.getNomineeName());
             nominee.setText("Nominee :" + loginResponses.getNomineeName());
         }
-        if (loginResponses.getRelation() != null) {
+       /* if (loginResponses.getRelation() != null) {
             relation.setText("Relation :" + loginResponses.getRelation());
-        }
+        }*/
         if (loginResponses.getAddress() != null) {
             address.setText("Address :" + loginResponses.getAddress());
         }
