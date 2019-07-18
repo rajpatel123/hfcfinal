@@ -70,7 +70,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text=""
+                            android:text="Name : Mohan"
                             android:textColor="@color/black"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -81,7 +81,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingLeft="@dimen/_5dp"
-                            android:text=""
+                            android:text="Side : Right"
                             android:textColor="@color/black"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -109,7 +109,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingLeft="@dimen/_5dp"
-                            android:text=""
+                            android:text="Earning : INR 1998.00"
                             android:textColor="@color/black"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -127,7 +127,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textAllCaps="true"
-                            android:text=""
+                            android:text="Code : WKNBUO"
                             android:textColor="@color/black"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -137,7 +137,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingLeft="@dimen/_5dp"
-                            android:text=" "
+                            android:text="Email :  "
                             android:textColor="@color/black"
                             android:textSize="10sp"
                             android:textStyle="bold" />
