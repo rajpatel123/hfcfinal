@@ -77,20 +77,22 @@ public class RightFragment extends Fragment {
                     if (response.body() != null) {
                         RightData rightData = response.body();
 
-                        if (rightData.getStatus() && rightData.getRightUser().size() == 0) {
-                            noData.setVisibility(View.VISIBLE);
-                            rightRecyclerView.setVisibility(GONE);
+                        if (rightData.getStatus()) {
+                            if (rightData.getRightUser() != null && rightData.getRightUser().size() == 0) {
+                                noData.setVisibility(View.VISIBLE);
+                                rightRecyclerView.setVisibility(GONE);
 
-                        } else {
-                            UserListAdaptor userListAdaptor = new UserListAdaptor(actvity);
-                            userListAdaptor.setDatumList(rightData);
-                            rightRecyclerView.setHasFixedSize(true);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(actvity);
-                            rightRecyclerView.setLayoutManager(layoutManager);
-                          //  rightRecyclerView.addItemDecoration(new DividerItemDecoration(actvity, DividerItemDecoration.VERTICAL));
-                            rightRecyclerView.setAdapter(userListAdaptor);
-                            noData.setVisibility(GONE);
-                            rightRecyclerView.setVisibility(View.VISIBLE);
+                            } else {
+                                UserListAdaptor userListAdaptor = new UserListAdaptor(actvity);
+                                userListAdaptor.setDatumList(rightData);
+                                rightRecyclerView.setHasFixedSize(true);
+                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(actvity);
+                                rightRecyclerView.setLayoutManager(layoutManager);
+                                //  rightRecyclerView.addItemDecoration(new DividerItemDecoration(actvity, DividerItemDecoration.VERTICAL));
+                                rightRecyclerView.setAdapter(userListAdaptor);
+                                noData.setVisibility(GONE);
+                                rightRecyclerView.setVisibility(View.VISIBLE);
+                            }
                         }
                     }
                 }

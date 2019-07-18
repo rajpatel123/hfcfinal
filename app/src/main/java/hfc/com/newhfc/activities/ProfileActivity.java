@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import hfc.com.newhfc.R;
-import hfc.com.newhfc.model.login.LoginResponse;
+import hfc.com.newhfc.model.login.ResponseLogin;
 import hfc.com.newhfc.utils.Constants;
 import hfc.com.newhfc.utils.HFMPrefs;
 
@@ -27,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     String firstname, lastName, userName, gmail, phone, address, pinCode, dob, email;
 
-    LoginResponse loginResponse;
+    ResponseLogin loginResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void profileData() {
 
         String data = HFMPrefs.getString(getApplicationContext(), Constants.LOGIN_DATA);
-        loginResponse = new Gson().fromJson(data, LoginResponse.class);
+        loginResponse = new Gson().fromJson(data, ResponseLogin.class);
 
 
         if (loginResponse.getFirstName() != null && loginResponse.getLastName() != null) {

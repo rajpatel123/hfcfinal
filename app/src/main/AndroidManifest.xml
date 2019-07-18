@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.MyDashboardActivity"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" android:screenOrientation="portrait"></activity>
         <activity android:name=".activities.RateusActivity" />
         <activity
             android:name=".activities.DocumentActivity"

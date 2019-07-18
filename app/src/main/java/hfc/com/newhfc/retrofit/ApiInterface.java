@@ -7,8 +7,6 @@ import hfc.com.newhfc.model.bankDetail.BankDetailRequest;
 import hfc.com.newhfc.model.bankDetail.BankDetailResponse;
 import hfc.com.newhfc.model.left.LeftDownLine;
 import hfc.com.newhfc.model.login.LoginRequest;
-import hfc.com.newhfc.model.login.LoginResponse;
-import hfc.com.newhfc.model.login.NewLoginResponse;
 import hfc.com.newhfc.model.login.ResponseLogin;
 import hfc.com.newhfc.model.right.RightData;
 import hfc.com.newhfc.model.updateUser.UpdateUserDetail;

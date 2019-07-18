@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:layout_weight="1"
-                android:text="Name : Raj Patel"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -41,7 +41,7 @@
                 android:layout_weight="1"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text="Email: raj95362@gmail.com"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="@dimen/_10dp"
-                android:text="Phone: 8285886155"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text="PAN : BZUPP4436P"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -93,7 +93,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
-                android:text="Adhar: 6767 6767 6768"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text="Ban A/C : 64736437643"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -125,19 +125,19 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
-                android:text="Nominee: Kavita"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_relations"
+                android:id="@+id/tv_relation"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text="Relation : "
+                android:text=" "
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -157,19 +157,19 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
-                android:text="Address: "
+                android:text=" "
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_earning"
+                android:id="@+id/tv_earnings"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text="Earning : 98895"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />

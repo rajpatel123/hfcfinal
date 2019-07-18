@@ -21,7 +21,7 @@ import com.google.gson.Gson;
 import java.util.Calendar;
 
 import hfc.com.newhfc.R;
-import hfc.com.newhfc.model.login.LoginResponse;
+import hfc.com.newhfc.model.login.ResponseLogin;
 import hfc.com.newhfc.model.updateUser.UpdateUserDetail;
 import hfc.com.newhfc.model.updateUser.UpdateUserResponse;
 import hfc.com.newhfc.retrofit.RestClient;
@@ -37,7 +37,7 @@ public class UpdateActivity extends AppCompatActivity {
     private Button submit;
     private Calendar c;
     private DatePickerDialog dp;
-    LoginResponse loginResponse;
+    ResponseLogin loginResponse;
 
     String fname, lname, phone, emailId, dateofBirth, adress, pincode;
     String userId;
@@ -50,7 +50,7 @@ public class UpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update);
 
         String data = HFMPrefs.getString(getApplicationContext(), Constants.LOGIN_DATA);
-        loginResponse = new Gson().fromJson(data, LoginResponse.class);
+        loginResponse = new Gson().fromJson(data, ResponseLogin.class);
 
 
         firstname = findViewById(R.id.et_firstname);

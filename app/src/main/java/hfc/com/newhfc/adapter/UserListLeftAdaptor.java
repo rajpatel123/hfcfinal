@@ -160,6 +160,7 @@ public class UserListLeftAdaptor extends RecyclerView.Adapter<UserListLeftAdapto
         private CircleImageView imageView;
         private AppCompatImageView appCompatImageView;
         private TextView tvName;
+        private CircleImageView circleImageView;
         private TextView tvAddress;
         private ImageView activeImage;
         private CardView cardViewList;
@@ -171,6 +172,8 @@ public class UserListLeftAdaptor extends RecyclerView.Adapter<UserListLeftAdapto
             tvAddress = view.findViewById(R.id.tvDesc);
             activeImage = view.findViewById(R.id.tvDelete);
             cardViewList = view.findViewById(R.id.deviceInfoView);
+
+
         }
     }
 

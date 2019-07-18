@@ -32,7 +32,7 @@ public class MyDashboardActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private MyPagerAdapter adapterViewPager;
     private TextView name,phone,adhar,nominee,address,emails,pan,bankAcnt,relation,earning;
-
+    ResponseLogin loginResponses;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,47 +42,47 @@ public class MyDashboardActivity extends AppCompatActivity {
         phone=findViewById(R.id.tv_phones);
         pan=findViewById(R.id.tv_pancard);
         nominee=findViewById(R.id.tv_nominee);
-        relation=findViewById(R.id.tv_relations);
+        relation=findViewById(R.id.tv_relation);
         address=findViewById(R.id.tv_address);
         adhar=findViewById(R.id.tv_adhar);
         bankAcnt=findViewById(R.id.tv_bank);
-        earning=findViewById(R.id.tv_earning);
+        earning=findViewById(R.id.tv_earnings);
 
 
-        ResponseLogin loginResponse = new Gson().fromJson(HFCPrefs.getString(this,LOGIN_DATA),ResponseLogin.class);
-        Log.d("mdfnv", "onCreate: "+loginResponse);
-        if (loginResponse.getFirstName()!=null && loginResponse.getLastName()!=null){
-            Log.d("mdfnv", "onCreate: "+loginResponse.getFirstName());
-            name.setText(" Name : " + loginResponse.getFirstName() + " " + loginResponse.getLastName());
+        ResponseLogin loginResponses = new Gson().fromJson(HFCPrefs.getString(this,LOGIN_DATA),ResponseLogin.class);
+        Log.d("mdfnv", "onCreate: "+loginResponses);
+        if (loginResponses.getFirstName()!=null && loginResponses.getLastName()!=null){
+            Log.d("mdfnv", "onCreate: "+loginResponses.getFirstName());
+            name.setText(" Name : " + loginResponses.getFirstName() + " " + loginResponses.getLastName());
         }
-        if (loginResponse.getEmail()!=null ){
-            emails.setText(" Email : " + loginResponse.getEmail() );
+        if (loginResponses.getEmail()!=null ){
+            emails.setText(" Email : " + loginResponses.getEmail() );
         }
-        if (loginResponse.getPhoneNumber() != null) {
-            phone.setText("Phone :" + loginResponse.getPhoneNumber());
+        if (loginResponses.getPhoneNumber() != null) {
+            phone.setText("Phone :" + loginResponses.getPhoneNumber());
         }
-        if (loginResponse. getPanNumber() != null) {
-            Log.d("mdfnv", "onCreate: "+loginResponse.getPanNumber());
-            pan.setText("Pan :" + loginResponse.getPanNumber());
+        if (loginResponses. getPanNumber() != null) {
+            Log.d("mdfnv", "onCreate: "+loginResponses.getPanNumber());
+            pan.setText("Pan :" + loginResponses.getPanNumber());
         }
-        if (loginResponse.getNomineeName() != null) {
-            Log.d("mdfnv", "onCreate: "+loginResponse.getNomineeName());
-            nominee.setText("Nominee :" + loginResponse.getNomineeName());
+        if (loginResponses.getNomineeName() != null) {
+            Log.d("mdfnv", "onCreate: "+loginResponses.getNomineeName());
+            nominee.setText("Nominee :" + loginResponses.getNomineeName());
         }
-        if (loginResponse.getRelation() != null) {
-            relation.setText("Relation :" + loginResponse.getRelation());
+        if (loginResponses.getRelation() != null) {
+            relation.setText("Relation :" + loginResponses.getRelation());
         }
-        if (loginResponse.getAddress() != null) {
-            address.setText("Address :" + loginResponse.getAddress());
+        if (loginResponses.getAddress() != null) {
+            address.setText("Address :" + loginResponses.getAddress());
         }
-        if (loginResponse.getAdharNumber() != null) {
-            adhar.setText("Adhar :" + loginResponse.getAdharNumber());
+        if (loginResponses.getAdharNumber() != null) {
+            adhar.setText("Adhar :" + loginResponses.getAdharNumber());
         }
-        if (loginResponse.getAccountNumber() != null) {
-            bankAcnt.setText("Bank A/C :" + loginResponse.getAccountNumber());
+        if (loginResponses.getAccountNumber() != null) {
+            bankAcnt.setText("Bank A/C :" + loginResponses.getAccountNumber());
         }
-        if (loginResponse.getCommision() != null) {
-            earning.setText("Earning :" + loginResponse.getCommision());
+        if (loginResponses.getCommision() != null) {
+            earning.setText("Earning :" + loginResponses.getCommision());
         }
 
 

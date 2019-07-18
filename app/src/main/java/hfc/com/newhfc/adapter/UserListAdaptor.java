@@ -150,7 +150,7 @@ public class UserListAdaptor extends RecyclerView.Adapter<UserListAdaptor.ViewHo
 
     @Override
     public int getItemCount() {
-        if (userList != null && userList.getRightUser().size() > 0) {
+        if (userList != null && userList.getRightUser()!=null && userList.getRightUser().size() > 0) {
             return userList.getRightUser().size();
         } else {
             return 0;
