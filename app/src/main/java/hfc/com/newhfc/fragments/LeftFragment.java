@@ -32,7 +32,7 @@ import static android.view.View.GONE;
 
 
 public class LeftFragment extends Fragment {
-    RecyclerView rightRecyclerView;
+    RecyclerView leftRecyclerView;
     UserListAdaptor adaptor;
     TextView noData;
     private MyDashboardActivity actvity;
@@ -52,9 +52,9 @@ public class LeftFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_right, container, false);
-        rightRecyclerView = view.findViewById(R.id.rightRecycler);
-        noData = view.findViewById(R.id.noData);
+        View view = inflater.inflate(R.layout.fragment_left, container, false);
+       leftRecyclerView = view.findViewById(R.id.leftRecycler);
+        noData = view.findViewById(R.id.noData1);
         return view;
     }
 
@@ -81,18 +81,18 @@ public class LeftFragment extends Fragment {
 
                         if (rightData.getStatus() && rightData.getData().size() == 0) {
                             noData.setVisibility(View.VISIBLE);
-                            rightRecyclerView.setVisibility(GONE);
+                            leftRecyclerView.setVisibility(GONE);
 
                         } else {
                             UserListLeftAdaptor userListAdaptor = new UserListLeftAdaptor(actvity);
                             userListAdaptor.setDatumList(rightData);
-                            rightRecyclerView.setHasFixedSize(true);
+                            leftRecyclerView.setHasFixedSize(true);
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(actvity);
-                            rightRecyclerView.setLayoutManager(layoutManager);
+                            leftRecyclerView.setLayoutManager(layoutManager);
                             //  rightRecyclerView.addItemDecoration(new DividerItemDecoration(actvity, DividerItemDecoration.VERTICAL));
-                            rightRecyclerView.setAdapter(userListAdaptor);
+                            leftRecyclerView.setAdapter(userListAdaptor);
                             noData.setVisibility(GONE);
-                            rightRecyclerView.setVisibility(View.VISIBLE);
+                            leftRecyclerView.setVisibility(View.VISIBLE);
                         }
                     }
                 }

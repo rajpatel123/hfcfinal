@@ -153,7 +153,7 @@ public class MyDashboardActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int i) {
-                tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(MyDashboardActivity.this, R.color.colorAccent));
+                tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(MyDashboardActivity.this, R.color.white));
             }
 
             @Override

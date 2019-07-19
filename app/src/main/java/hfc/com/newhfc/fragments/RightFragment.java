@@ -52,7 +52,7 @@ public class RightFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_right, container, false);
         rightRecyclerView = view.findViewById(R.id.rightRecycler);
-        noData = view.findViewById(R.id.noData);
+       // noData = view.findViewById(R.id.noData1);
         return view;
     }
 
@@ -90,7 +90,7 @@ public class RightFragment extends Fragment {
                                 rightRecyclerView.setLayoutManager(layoutManager);
                                 //  rightRecyclerView.addItemDecoration(new DividerItemDecoration(actvity, DividerItemDecoration.VERTICAL));
                                 rightRecyclerView.setAdapter(userListAdaptor);
-                                noData.setVisibility(GONE);
+                               // noData.setVisibility(GONE);
                                 rightRecyclerView.setVisibility(View.VISIBLE);
                             }
                         }
