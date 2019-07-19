@@ -39,6 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:singleLine="true"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
                 android:text=""
@@ -137,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text="Earning : ----"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -169,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:paddingLeft="@dimen/_5dp"
-                android:text="Relation : ----"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />

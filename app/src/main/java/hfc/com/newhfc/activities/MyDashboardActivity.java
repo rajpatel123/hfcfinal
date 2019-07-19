@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.util.List;
+
 import hfc.com.newhfc.R;
 import hfc.com.newhfc.fragments.LeftFragment;
 import hfc.com.newhfc.fragments.RightFragment;
@@ -33,6 +35,9 @@ public class MyDashboardActivity extends AppCompatActivity {
     private MyPagerAdapter adapterViewPager;
     private TextView name,phone,adhar,nominee,address,emails,pan,bankAcnt,relation,earning;
     ResponseLogin loginResponses;
+
+    List<Fragment>fragmentList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,40 +54,80 @@ public class MyDashboardActivity extends AppCompatActivity {
         earning=findViewById(R.id.tv_earning);
 
 
+
+
+
+
+
+
+
+
         ResponseLogin loginResponses = new Gson().fromJson(HFCPrefs.getString(this,LOGIN_DATA),ResponseLogin.class);
         Log.d("mdfnv", "onCreate: "+loginResponses);
         if (loginResponses.getFirstName()!=null && loginResponses.getLastName()!=null){
             Log.d("mdfnv", "onCreate: "+loginResponses.getFirstName());
             name.setText(" Name : " + loginResponses.getFirstName() + " " + loginResponses.getLastName());
-        }
+        }else {
+            name.setText(" Name : kishan kumar" );
+
+              }
         if (loginResponses.getEmail()!=null ){
             emails.setText(" Email : " + loginResponses.getEmail() );
+        }else {
+            emails.setText(" Email : kishan@gmail.com" );
+
         }
         if (loginResponses.getPhoneNumber() != null) {
             phone.setText("Phone :" + loginResponses.getPhoneNumber());
+        }else {
+            phone.setText(" Phone : 8283938484" );
+
         }
         if (loginResponses. getPanNumber() != null) {
             Log.d("mdfnv", "onCreate: "+loginResponses.getPanNumber());
             pan.setText("Pan :" + loginResponses.getPanNumber());
+        }else {
+            pan.setText(" Pan : kihfdh88776786876" );
+
         }
         if (loginResponses.getNomineeName() != null) {
             Log.d("mdfnv", "onCreate: "+loginResponses.getNomineeName());
             nominee.setText("Nominee :" + loginResponses.getNomineeName());
+        }else {
+            nominee.setText(" Nominee : Mohan" );
+
         }
-       /* if (loginResponses.getRelation() != null) {
-            relation.setText("Relation :" + loginResponses.getRelation());
-        }*/
+        if (loginResponses.getRelation() != null ) {
+            relation.setText("Relation : wife");
+        }else {
+            relation.setText(" Relation : wife" );
+
+        }
+
+
         if (loginResponses.getAddress() != null) {
             address.setText("Address :" + loginResponses.getAddress());
+        }else {
+            address.setText(" Address : varanasi" );
+
         }
         if (loginResponses.getAdharNumber() != null) {
             adhar.setText("Adhar :" + loginResponses.getAdharNumber());
+        }else {
+            adhar.setText(" 987654323456" );
+
         }
         if (loginResponses.getAccountNumber() != null) {
             bankAcnt.setText("Bank A/C :" + loginResponses.getAccountNumber());
+        }else {
+            bankAcnt.setText(" 1234567890098" );
+
         }
         if (loginResponses.getCommision() != null) {
             earning.setText("Earning :" + loginResponses.getCommision());
+        }else {
+            earning.setText(" Earning : 98.99999" );
+
         }
 
 
@@ -117,6 +162,9 @@ public class MyDashboardActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

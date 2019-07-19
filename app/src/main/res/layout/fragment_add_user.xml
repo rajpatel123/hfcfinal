@@ -37,12 +37,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="@dimen/_15dp"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/profile" />
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -70,12 +65,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="@dimen/_15dp"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/profile" />
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -103,12 +93,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="@dimen/_15dp"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/profile" />
 
 
                 <android.support.design.widget.TextInputLayout
@@ -138,12 +122,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="@dimen/_15dp"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/phone" />
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -172,12 +151,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="@dimen/_15dp"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/email" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -235,12 +208,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="@dimen/_15dp"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/clender" />
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -266,12 +234,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="@dimen/_15dp"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/home" />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -300,12 +262,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="@dimen/_15dp"
-                    android:layout_marginTop="25dp"
-                    android:src="@drawable/loction" />
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
