@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -68,65 +69,66 @@ public class MyDashboardActivity extends AppCompatActivity {
             Log.d("mdfnv", "onCreate: "+loginResponses.getFirstName());
             name.setText(" Name : " + loginResponses.getFirstName() + " " + loginResponses.getLastName());
         }else {
-            name.setText(" Name : kishan kumar" );
+            name.setText(" Name : ----" );
 
               }
         if (loginResponses.getEmail()!=null ){
             emails.setText(" Email : " + loginResponses.getEmail() );
         }else {
-            emails.setText(" Email : kishan@gmail.com" );
+            emails.setText(" Email : ----" );
 
         }
         if (loginResponses.getPhoneNumber() != null) {
             phone.setText("Phone :" + loginResponses.getPhoneNumber());
         }else {
-            phone.setText(" Phone : 8283938484" );
+            phone.setText(" Phone : ----" );
 
         }
         if (loginResponses. getPanNumber() != null) {
             Log.d("mdfnv", "onCreate: "+loginResponses.getPanNumber());
             pan.setText("Pan :" + loginResponses.getPanNumber());
         }else {
-            pan.setText(" Pan : kihfdh88776786876" );
+            pan.setText(" Pan : ----" );
 
         }
-        if (loginResponses.getNomineeName() != null) {
+        if (!TextUtils.isEmpty(loginResponses.getNomineeName())) {
             Log.d("mdfnv", "onCreate: "+loginResponses.getNomineeName());
             nominee.setText("Nominee :" + loginResponses.getNomineeName());
         }else {
-            nominee.setText(" Nominee : Mohan" );
+            nominee.setText(" Nominee : ----" );
 
         }
-        if (loginResponses.getRelation() != null ) {
-            relation.setText("Relation : wife");
+
+        if (!TextUtils.isEmpty(loginResponses.getRelation())) {
+            relation.setText("Relation :" + loginResponses.getRelation());
         }else {
-            relation.setText(" Relation : wife" );
+            relation.setText(" Relation : ----" );
 
         }
 
 
-        if (loginResponses.getAddress() != null) {
+        if (!TextUtils.isEmpty(loginResponses.getAddress())) {
             address.setText("Address :" + loginResponses.getAddress());
         }else {
-            address.setText(" Address : varanasi" );
+            address.setText(" Address : ----" );
 
         }
-        if (loginResponses.getAdharNumber() != null) {
+        if (!TextUtils.isEmpty(loginResponses.getAdharNumber())) {
             adhar.setText("Adhar :" + loginResponses.getAdharNumber());
         }else {
-            adhar.setText(" 987654323456" );
+            adhar.setText(" Adhar : ----" );
 
         }
-        if (loginResponses.getAccountNumber() != null) {
+        if (!TextUtils.isEmpty(loginResponses.getAccountNumber())) {
             bankAcnt.setText("Bank A/C :" + loginResponses.getAccountNumber());
         }else {
-            bankAcnt.setText(" 1234567890098" );
+            bankAcnt.setText(" Bank A/C : ----" );
 
         }
-        if (loginResponses.getCommision() != null) {
+        if (!TextUtils.isEmpty(loginResponses.getCommision())) {
             earning.setText("Earning :" + loginResponses.getCommision());
         }else {
-            earning.setText(" Earning : 98.99999" );
+            earning.setText("Earning : ----" );
 
         }
 
