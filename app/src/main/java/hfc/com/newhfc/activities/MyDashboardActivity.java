@@ -123,6 +123,7 @@ public class MyDashboardActivity extends AppCompatActivity {
             bankAcnt.setText("Bank A/C :" + loginResponses.getAccountNumber());
         }else {
             bankAcnt.setText(" Bank A/C : ----" );
+            
 
         }
         if (!TextUtils.isEmpty(loginResponses.getCommision())) {
